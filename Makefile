@@ -11,7 +11,7 @@ INC_DIR     := includes
 
 BUILD_MODE  ?= debug
 BUILD_DIR   := build/$(BUILD_MODE)
-BIN_SERVER  := $(BUILD_DIR)/just-weather-server
+BIN  := $(BUILD_DIR)/just-weather-server
 
 # ------------------------------------------------------------
 # Build configuration
@@ -57,11 +57,11 @@ OBJ     := $(OBJ_SRC) $(OBJ_LIB)
 # Build rules
 # ------------------------------------------------------------
 .PHONY: all
-all: $(BIN_SERVER)
+all: $(BIN)
 	@echo "Build complete. [$(BUILD_TYPE)]"
 
 # Link server binary
-$(BIN_SERVER): $(OBJ)
+$(BIN): $(OBJ)
 	@mkdir -p $(dir $@)
 	@$(CC) $(LDFLAGS) $(OBJ) -o $@ $(LIBS)
 
@@ -78,27 +78,17 @@ $(BUILD_DIR)/lib/%.o: lib/%.c
 	@$(CC) $(CFLAGS_LIB) -c $< -o $@
 
 # ------------------------------------------------------------
-# Release target
-# ------------------------------------------------------------
-.PHONY: release
-release:
-	@$(MAKE) --no-print-directory BUILD_MODE=release all
-
-# ------------------------------------------------------------
-# Debugging and Sanitizers
-# ------------------------------------------------------------
-.PHONY: debug
-debug:
-	@$(MAKE) --no-print-directory BUILD_MODE=debug all
-
-# ------------------------------------------------------------
 # Utilities
 # ------------------------------------------------------------
+.PHONY: run
+run: $(BIN_SERVER)
+	@echo "Running $(BIN)..."
+	@./$(BIN)
+
 .PHONY: clean
 clean:
 	@rm -rf build
 	@echo "Cleaned build artifacts."
-
 
 # ------------------------------------------------------------
 # Start server in detached tmux session

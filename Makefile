@@ -81,7 +81,7 @@ $(BUILD_DIR)/lib/%.o: lib/%.c
 # Utilities
 # ------------------------------------------------------------
 .PHONY: run
-run: $(BIN_SERVER)
+run: $(BIN)
 	@echo "Running $(BIN)..."
 	@./$(BIN)
 
@@ -94,14 +94,14 @@ clean:
 # Start server in detached tmux session
 # ------------------------------------------------------------
 .PHONY: start-server
-start-server: $(BIN_SERVER)
+start-server: $(BIN)
 	@SESSION_NAME=just-weather-server; \
 	if tmux has-session -t $$SESSION_NAME 2>/dev/null; then \
 		echo "Session '$$SESSION_NAME' already exists. Attaching..."; \
 		tmux attach -t $$SESSION_NAME; \
 	else \
 		echo "Starting server in detached tmux session '$$SESSION_NAME'..."; \
-		tmux new -d -s $$SESSION_NAME './$(BIN_SERVER)'; \
+		tmux new -d -s $$SESSION_NAME './$(BIN)'; \
 		echo "Server started in tmux session '$$SESSION_NAME'."; \
 	fi
 

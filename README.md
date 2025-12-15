@@ -95,6 +95,7 @@ curl "http://stockholm3.onvo.se/v1/current?lat=59.33&lon=18.07"
 **Response Format:**
 ```json
 {
+  "success": true,
   "data": {
     "current_weather": {
       "temperature": 27.0,

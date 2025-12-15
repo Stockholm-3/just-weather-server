@@ -111,8 +111,7 @@ curl "http://stockholm3.onvo.se/v1/current?lat=59.33&lon=18.07"
       "precipitation_unit": "mm",
       "humidity": 0.0,
       "pressure": 1008.6,
-      "time": 1764084412,
-      "city_name": "Location (1.0000, 2.0000)"
+      "time": "2025-12-07T20:15"
     },
     "location": {
       "latitude": 1.0,
@@ -124,25 +123,25 @@ curl "http://stockholm3.onvo.se/v1/current?lat=59.33&lon=18.07"
 
 **Response Fields:**
 
-| Field                         | Type    | Description                                      |
-|-------------------------------|---------|--------------------------------------------------|
-| `coords.latitude`             | float   | Latitude of the requested location               |
-| `coords.longitude`            | float   | Longitude of the requested location              |
-| `current.temperature`         | float   | Current air temperature                          |
-| `current.temperature_unit`    | string  | Temperature unit (°C)                            |
-| `current.windspeed`           | float   | Wind speed                                       |
-| `current.windspeed_unit`      | string  | Wind speed unit (km/h)                           |
-| `current.wind_direction_10m`  | integer | Wind direction in degrees (0-360)                |
-| `current.wind_direction_name` | string  | Cardinal direction (e.g., "South", "North-East") |
-| `current.weather_code`        | integer | Weather condition code (WMO standard)            |
-| `current.weather_description` | string  | Human-readable weather description               |
-| `current.is_day`              | integer | 1 if daytime, 0 if nighttime                     |
-| `current.precipitation`       | float   | Precipitation amount                             |
-| `current.precipitation_unit`  | string  | Precipitation unit (mm)                          |
-| `current.humidity`            | float   | Relative humidity percentage                     |
-| `current.pressure`            | float   | Atmospheric pressure in hPa                      |
-| `current.time`                | integer | UNIX timestamp of the measurement                |
-| `current.city_name`           | string  | Name of the location                             |
+| Field                                    | Type    | Description                                      |
+|------------------------------------------|---------|--------------------------------------------------|
+| `success`                                | boolean | Whether the request was successful               |
+| `data.location.latitude`                 | float   | Latitude of the requested location               |
+| `data.location.longitude`                | float   | Longitude of the requested location              |
+| `data.current_weather.temperature`       | float   | Current air temperature                          |
+| `data.current_weather.temperature_unit`  | string  | Temperature unit (°C)                            |
+| `data.current_weather.windspeed`         | float   | Wind speed                                       |
+| `data.current_weather.windspeed_unit`    | string  | Wind speed unit (km/h)                           |
+| `data.current_weather.wind_direction_10m`  | integer | Wind direction in degrees (0-360)              |
+| `data.current_weather.wind_direction_name` | string  | Cardinal direction (e.g., "South", "North-East") |
+| `data.current_weather.weather_code`      | integer | Weather condition code (WMO standard)            |
+| `data.current_weather.weather_description` | string  | Human-readable weather description             |
+| `data.current_weather.is_day`            | integer | 1 if daytime, 0 if nighttime                     |
+| `data.current_weather.precipitation`     | float   | Precipitation amount                             |
+| `data.current_weather.precipitation_unit`  | string  | Precipitation unit (mm)                        |
+| `data.current_weather.humidity`          | float   | Relative humidity percentage                     |
+| `data.current_weather.pressure`          | float   | Atmospheric pressure in hPa                      |
+| `data.current_weather.time`              | string  | Timestamp in ISO 8601 format (YYYY-MM-DDTHH:MM)  |
 
 ---
 
@@ -197,12 +196,12 @@ curl "http://stockholm3.onvo.se/v1/weather?city=Paris&region=Texas&country=US"
       "weather_description": "Overcast",
       "windspeed": 6.8,
       "windspeed_unit": "km/h",
-      "winddirection": 153,
-      "winddirection_name": "South-Southeast",
+      "wind_direction_10m": 153,
+      "wind_direction_name": "South-Southeast",
       "humidity": 0.0,
       "pressure": 1006.6,
       "precipitation": 0.0,
-      "is_day": false
+      "is_day": 0
     }
   }
 }
@@ -227,12 +226,12 @@ curl "http://stockholm3.onvo.se/v1/weather?city=Paris&region=Texas&country=US"
 | `data.current_weather.weather_description` | string | Human-readable weather description  |
 | `data.current_weather.windspeed`     | float   | Wind speed                                 |
 | `data.current_weather.windspeed_unit`| string  | Wind speed unit (km/h)                     |
-| `data.current_weather.winddirection` | integer | Wind direction in degrees (0-360)          |
-| `data.current_weather.winddirection_name` | string | Cardinal wind direction             |
+| `data.current_weather.wind_direction_10m` | integer | Wind direction in degrees (0-360)     |
+| `data.current_weather.wind_direction_name` | string | Cardinal wind direction            |
 | `data.current_weather.humidity`      | float   | Relative humidity percentage               |
 | `data.current_weather.pressure`      | float   | Atmospheric pressure (hPa)                 |
 | `data.current_weather.precipitation` | float   | Precipitation amount (mm)                  |
-| `data.current_weather.is_day`        | boolean | Day/night indicator                        |
+| `data.current_weather.is_day`        | integer | 1 if daytime, 0 if nighttime               |
 
 ---
 

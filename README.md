@@ -101,26 +101,28 @@ curl "http://stockholm3.onvo.se/v1/current?lat=59.33&lon=18.07"
 **Response Format:**
 ```json
 {
-  "current": {
-    "temperature": 27.0,
-    "temperature_unit": "°C",
-    "windspeed": 17.8,
-    "windspeed_unit": "km/h",
-    "wind_direction_10m": 173,
-    "wind_direction_name": "South",
-    "weather_code": 2,
-    "weather_description": "Partly cloudy",
-    "is_day": 1,
-    "precipitation": 0.0,
-    "precipitation_unit": "mm",
-    "humidity": 0.0,
-    "pressure": 1008.6,
-    "time": 1764084412,
-    "city_name": "Location (1.0000, 2.0000)"
-  },
-  "coords": {
-    "latitude": 1.0,
-    "longitude": 2.0
+  data:{
+    current_weather: {
+      "temperature": 27.0,
+      "temperature_unit": "°C",
+      "windspeed": 17.8,
+      "windspeed_unit": "km/h",
+      "wind_direction_10m": 173,
+      "wind_direction_name": "South",
+      "weather_code": 2,
+      "weather_description": "Partly cloudy",
+      "is_day": 1,
+      "precipitation": 0.0,
+      "precipitation_unit": "mm",
+      "humidity": 0.0,
+      "pressure": 1008.6,
+      "time": 1764084412,
+      "city_name": "Location (1.0000, 2.0000)"
+    },
+    location: {
+      "latitude": 1.0,
+      "longitude": 2.0
+    }
   }
 }
 ```

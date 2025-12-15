@@ -68,7 +68,7 @@ build/<mode>/just-weather-server
 
 **Base URL:**
 ```
-http://stockholm3.onvo.se:81/v1/
+http://stockholm3.onvo.se/v1/
 ```
 
 All responses follow a standardized format with `success` field and `data` payload.
@@ -95,7 +95,7 @@ Retrieves current weather data for specific geographic coordinates.
 
 **Example Request:**
 ```bash
-curl "http://stockholm3.onvo.se:81/v1/current?lat=59.33&lon=18.07"
+curl "http://stockholm3.onvo.se/v1/current?lat=59.33&lon=18.07"
 ```
 
 **Response Format:**
@@ -169,13 +169,13 @@ Retrieves current weather for a city by name. Automatically geocodes the city an
 **Example Requests:**
 ```bash
 # Simple city search
-curl "http://stockholm3.onvo.se:81/v1/weather?city=Stockholm"
+curl "http://stockholm3.onvo.se/v1/weather?city=Stockholm"
 
 # City with country filter
-curl "http://stockholm3.onvo.se:81/v1/weather?city=Stockholm&country=SE"
+curl "http://stockholm3.onvo.se/v1/weather?city=Stockholm&country=SE"
 
 # City with region (for disambiguation)
-curl "http://stockholm3.onvo.se:81/v1/weather?city=Paris&region=Texas&country=US"
+curl "http://stockholm3.onvo.se/v1/weather?city=Paris&region=Texas&country=US"
 ```
 
 **Response Format:**
@@ -260,10 +260,10 @@ Search for cities by name prefix. Optimized for autocomplete with 3-tier search 
 **Example Requests:**
 ```bash
 # Autocomplete search
-curl "http://stockholm3.onvo.se:81/v1/cities?query=Stock"
+curl "http://stockholm3.onvo.se/v1/cities?query=Stock"
 
 # Single city lookup
-curl "http://stockholm3.onvo.se:81/v1/cities?query=Kyiv"
+curl "http://stockholm3.onvo.se/v1/cities?query=Kyiv"
 ```
 
 **Response Format:**
